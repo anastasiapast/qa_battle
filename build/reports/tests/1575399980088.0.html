@@ -48,13 +48,13 @@
             <h6>Fill login form to sign in</h6>
             <hr>
             <div class="form-group" onclick="startInputLogin()">
-                <input style="pointer-events: none" disabled="" type="email" class="form-control" id="loginInput" aria-describedby="emailHelp" placeholder="Your Login">
+                <input style="pointer-events: none;" type="email" class="form-control" id="loginInput" aria-describedby="emailHelp" placeholder="Your Login" disabled="">
                 <small id="loginHelp" class="form-text text-muted">We'll never share your email with anyone
                     else.</small>
             </div>
 
             <div class="form-group" onclick="startInputPassword()">
-                <input style="pointer-events: none" disabled="" type="password" class="form-control" id="passwordInput" onclick="startInputPassword()" placeholder="Your Password">
+                <input style="pointer-events: all;" type="password" class="form-control" id="passwordInput" onclick="startInputPassword()" placeholder="Your Password">
                 <small id="passwordHelp" class="form-text text-muted">We'll never save your password anywhere.</small>
             </div>
 
@@ -63,8 +63,7 @@
         <div class="card-footer bg-transparent ">
             <button class="btn btn-primary" style="display: none">
             </button>
-            <button disabled="" class="btn btn-primary">Hover me faster!
-            </button>
+            <button class="btn btn-primary">Wait for some time...</button>
             <div>
             </div>
 
