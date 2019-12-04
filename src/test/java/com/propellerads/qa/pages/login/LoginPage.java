@@ -7,8 +7,7 @@ import com.propellerads.qa.pages.base.BasePage;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -30,12 +29,14 @@ public class LoginPage extends BasePage {
 
     private SelenideElement signIn = $(".card-footer img");
 
+    public String loginUrl = Configuration.baseUrl + "/index.html";
+
     public LoginPage open() {
-        Selenide.open(Configuration.baseUrl + "/index.html");
+        Selenide.open(loginUrl);
         return this;
     }
 
-    public LoginPage login(String user, String password) {
+    public LoginPage setFields(String user, String password) {
         formInputLogin.click();
         loginInput.click();
         loginInput.clear();
@@ -44,6 +45,18 @@ public class LoginPage extends BasePage {
         passwordInput.click();
         passwordInput.clear();
         passwordInput.setValue(password);
+        return this;
+    }
+
+    public LoginPage hoverButton(){
+        hoverButton.shouldBe(visible.because("'Hover me faster' button is not visible")).hover();
+        waitButton.waitUntil(appear, 5000);
+        return this;
+    }
+
+    public LoginPage clickSignIn(){
+        signIn.waitUntil(appear, 10000);
+        signIn.shouldBe(visible.because("'Sign In' button is not visible")).click();
         return this;
     }
 
