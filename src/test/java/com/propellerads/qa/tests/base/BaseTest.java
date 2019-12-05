@@ -9,13 +9,14 @@ import org.junit.jupiter.api.BeforeAll;
 public class BaseTest {
 
     @BeforeAll
-    public static void setUp(){
+    public static void setUp() {
         Configuration.browser = Browsers.CHROME;
         Configuration.baseUrl = "http://localhost:8080";
     }
 
     @AfterEach
-    public void close(){
+    public void close() {
         Selenide.close();
     }
+
 }
