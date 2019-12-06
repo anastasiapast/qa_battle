@@ -1,12 +1,12 @@
 package com.propellerads.qa.pages.main;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.propellerads.qa.WebUtils.skipAuthUrl;
 
 public class MainPage {
 
@@ -33,7 +33,7 @@ public class MainPage {
         return articleType.$$(".sub-tree-element");
     }
 
-    public String mainUrl = skipAuthUrl() + "/index.html";
+    public String mainUrl = Configuration.baseUrl + "/index.html";
 
     public MainPage open() {
         Selenide.open(mainUrl);

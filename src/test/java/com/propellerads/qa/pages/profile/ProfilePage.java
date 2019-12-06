@@ -1,14 +1,15 @@
 package com.propellerads.qa.pages.profile;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.propellerads.qa.pages.main.MainPage;
 import lombok.Getter;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.propellerads.qa.WebUtils.skipAuthUrl;
 
 @Getter
 public class ProfilePage {
@@ -19,7 +20,7 @@ public class ProfilePage {
 
     private SelenideElement lastNameInput = $("#lastNameInput");
 
-    private SelenideElement saveUserInfoBtn = $("button[text='Save user info']");
+    private SelenideElement saveUserInfoBtn = $$("button").findBy(text("Save user info"));
 
     private SelenideElement cardNumberInput = $("#cardNumberInput");
 
@@ -27,9 +28,11 @@ public class ProfilePage {
 
     private SelenideElement paymentRange = $("#paymentRange");
 
-    private SelenideElement savePaymentInfoBtn = $("button[text='Save payment info']");
+    private SelenideElement savePaymentInfoBtn = $$("button").findBy(text("Save payment info"));
 
-    public String profileUrl = skipAuthUrl() + "/profile.html/";
+    private SelenideElement successUserInfoSaveInfo = $("#successUserInfoSaveInfo");
+
+    public String profileUrl = Configuration.baseUrl + "/profile.html";
 
     public ProfilePage open() {
         Selenide.open(profileUrl);

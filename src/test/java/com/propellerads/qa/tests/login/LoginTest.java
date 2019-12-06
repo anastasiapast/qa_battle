@@ -15,8 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.propellerads.qa.WebUtils.correctPassword;
-import static com.propellerads.qa.WebUtils.correctUser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
