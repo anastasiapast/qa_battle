@@ -1,6 +1,12 @@
 package com.propellerads.qa.pages.base;
 
+import com.codeborne.selenide.SelenideElement;
+
 public class BasePage {
 
-    //public static String url = "http://localhost:8080";
+    protected void setField(SelenideElement element, String value){
+        element.click();
+        element.clear();
+        element.sendKeys(value);
+    }
 }

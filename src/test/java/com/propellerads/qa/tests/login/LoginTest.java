@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.propellerads.qa.pages.login.LoginPage;
 import com.propellerads.qa.tests.base.BaseTest;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,6 +19,7 @@ import static com.codeborne.selenide.Condition.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Feature("Login page tests")
 public class LoginTest extends BaseTest {
 
     LoginPage loginPage = new LoginPage();
@@ -85,7 +87,7 @@ public class LoginTest extends BaseTest {
         loginPage.clickSignIn();
 
         Selenide.switchTo().alert().dismiss();
-        assertEquals(loginPage.loginUrl, WebDriverRunner.url(),  WebDriverRunner.url() + " is open instead of login page after first alert dismissing");
+        assertEquals(WebDriverRunner.url(), loginPage.loginUrl,  "Wrong URL is open instead of login page after first alert dismissing");
     }
 
     @DisplayName("Check first alert dismiss")

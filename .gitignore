@@ -1,0 +1,9 @@
+target
+.idea
+*.iml
+.gradle
+build
+allure-results
+test-output
+.allure
+out

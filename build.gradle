@@ -1,5 +1,26 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.qameta.allure:allure-gradle:2.8.1'
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: "io.qameta.allure"
+
+allure {
+    version = '2.8.1'
+    allureJavaVersion = "2.12.1"
+    autoconfigure = true
+    aspectjweaver = true
 }
 
 group 'propeller.ads'
@@ -7,22 +28,23 @@ version '1.0'
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.4.0'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.5.2'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.2'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
-    compile group: 'com.codeborne', name: 'selenide', version: '5.2.7'
+    compile group: 'com.codeborne', name: 'selenide', version: '5.5.1'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.6'
-    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.4.0.RELEASE'
+
+    compile group: 'io.qameta.allure', name: 'allure-junit5', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-java-commons', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.0'
+
+    compile 'net.lightbody.bmp:browsermob-core:2.1.5'
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform()//testCompile 'com.codeborne:selenide:5.5.1'
 }
